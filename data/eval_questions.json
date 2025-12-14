@@ -1,0 +1,107 @@
+[
+    {
+        "id": 1,
+        "question": "What parameters are estimated in a Simple Linear Regression model?",
+        "gold_lecture": "Lec 02",
+        "type": "concept",
+        "note": "Keywords: intercept, sleep, beta0, beta1"
+    },
+    {
+        "id": 2,
+        "question": "How do you write the Multiple Linear Regression model in matrix notation?",
+        "gold_lecture": "Lec 03",
+        "type": "formula",
+        "note": "Keywords: y = A beta, feature matrix"
+    },
+    {
+        "id": 3,
+        "question": "What is the Bias-Variance Tradeoff?",
+        "gold_lecture": "Lec 04",
+        "type": "concept",
+        "note": "Keywords: under-fitting, over-fitting, model complexity"
+    },
+    {
+        "id": 4,
+        "question": "Which regularization method (Ridge or Lasso) favors sparse coefficients where many are zero?",
+        "gold_lecture": "Lec 05",
+        "type": "comparison",
+        "note": "Keywords: L1 norm, Laplacian prior, Lasso"
+    },
+    {
+        "id": 5,
+        "question": "What represents the probability P(y=1|x) in Logistic Regression?",
+        "gold_lecture": "Lec 06",
+        "type": "formula",
+        "note": "Keywords: Sigmoid, 1/(1+e^-z)"
+    },
+    {
+        "id": 6,
+        "question": "What is the update rule for Gradient Descent?",
+        "gold_lecture": "Lec 07",
+        "type": "algorithm",
+        "note": "Keywords: step size, learning rate, steepest decrease"
+    },
+    {
+        "id": 7,
+        "question": "What is the Hinge Loss function used in SVM?",
+        "gold_lecture": "Lec 08",
+        "type": "definition",
+        "note": "Keywords: max(0, 1-y(wTx+b))"
+    },
+    {
+        "id": 8,
+        "question": "What is Backpropagation?",
+        "gold_lecture": "Lec 09",
+        "type": "algorithm",
+        "note": "Keywords: computing gradients, reverse, chain rule"
+    },
+    {
+        "id": 9,
+        "question": "What acts as a feature detector in Convolutional Neural Networks?",
+        "gold_lecture": "Lec 10",
+        "type": "concept",
+        "note": "Keywords: filters, kernels, convolution"
+    },
+    {
+        "id": 10,
+        "question": "What is the purpose of Max Pooling layers?",
+        "gold_lecture": "Lec 10",
+        "type": "concept",
+        "note": "Keywords: subsampling, downsampling, dimension reduction"
+    },
+    {
+        "id": 11,
+        "question": "How do we compute the Principal Components (PCA) of a data matrix?",
+        "gold_lecture": "Lec 11",
+        "type": "algorithm",
+        "note": "Keywords: SVD, Singular Value Decomposition, Eigenvectors"
+    },
+    {
+        "id": 12,
+        "question": "What dataset is commonly used for movie sentiment analysis?",
+        "gold_lecture": "Lec 12",
+        "type": "fact",
+        "note": "Keywords: IMDB, reviews"
+    },
+    {
+        "id": 13,
+        "question": "Describe the K-Means clustering algorithm steps.",
+        "gold_lecture": "Lec 13",
+        "type": "algorithm",
+        "note": "Keywords: centroids, update mean, assign cluster"
+    },
+    {
+        "id": 14,
+        "question": "What is the difference between Bagging and Random Forest?",
+        "gold_lecture": "Lec 14",
+        "type": "comparison",
+        "note": "Keywords: bootstrap, subset of features, decorrelate trees"
+    },
+    {
+        "id": 15,
+        "question": "What is Out-of-Bag (OOB) error?",
+        "gold_lecture": "Lec 14",
+        "type": "definition",
+        "note": "Keywords: bootstrap sampling, validation"
+    }
+]

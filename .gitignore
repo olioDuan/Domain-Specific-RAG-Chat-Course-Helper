@@ -1,0 +1,11 @@
+# Python cache / venv
+.venv/
+__pycache__/
+*.pyc
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+
+# Jupyter / misc (如果有)
+.ipynb_checkpoints/

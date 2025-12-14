@@ -1,0 +1,13 @@
+langchain
+langchain-core
+langchain-community
+faiss-cpu
+pymupdf
+gradio
+matplotlib
+scikit-learn
+pandas
+sentence-transformers
+numpy
+ollama
+tqdm
