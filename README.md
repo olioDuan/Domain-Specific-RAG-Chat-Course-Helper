@@ -2,9 +2,44 @@
 
 ![DeepSeek R1](https://img.shields.io/badge/Model-DeepSeek_R1-536AF5) ![Ollama](https://img.shields.io/badge/Runner-Ollama-white?logo=ollama&logoColor=black) ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white) ![HuggingFace](https://img.shields.io/badge/Embeddings-Hugging_Face-FFD21E?logo=huggingface&logoColor=black) ![FAISS](https://img.shields.io/badge/Vector_DB-FAISS-008080) ![Gradio](https://img.shields.io/badge/UI-Gradio-FF7C00?logo=gradio&logoColor=white) ![NYU](https://img.shields.io/badge/Course-NYU_6143-57068c)
 
-![UI1](.\assets\image-20251213062527617.png)
+![UI1](assets/image-20251213062527617.png)
 
-[TOC]
+## Table of Contents
+
+1. [Introduction](#1-introduction)
+2. [Key Features / Data & Preprocessing](#2-key-features--data--preprocessing)
+   - [Input Data: Lecture Slides](#21-input-data-lecture-slides)
+   - [One-Slide-One-Chunk Strategy](#22-one-slide-one-chunk-strategy)
+   - [Text Cleaning](#23-text-cleaning)
+   - [Metadata Design](#24-metadata-design)
+   - [Evaluation Metrics](#25-evaluation-metrics)
+   - [Quiz Generation](#26-quiz-generation)
+3. [Performance](#3-performance)
+   - [Retrieval Quality](#31-retrieval-quality)
+   - [PCA of Slide Embeddings](#32-pca-of-slide-embeddings)
+   - [PCA of Lecture Centers](#33-pca-of-lecture-centers)
+4. [System Architecture](#4-system-architecture)
+5. [Demo Screenshots](#5-demo-screenshots)
+   - [Overall Home UI (Three Tabs: Chat / PCA Map / Evaluation)](#51-overall-home-ui-three-tabs-chat--pca-map--evaluation)
+   - [Chat – Simple Question and Self-Quiz Generated with Slide Citations](#52-chat--simple-question-and-self-quiz-generated-with-slide-citations)
+   - [Chat – Formula / Derivation Question](#53-chat--formula--derivation-question)
+   - [Chat – Off-Topic Question](#54-chat--off-topic-question)
+   - [Chat – Invalid / Very Short Query (“test”)](#55-chat--invalid--very-short-query-test)
+   - [PCA Map  (With Retry Button) – Slide Embeddings Colored by Lecture](#56-pca-map--with-retry-button--slide-embeddings-colored-by-lecture)
+   - [PCA Map (With Retry Button) – Lecture Center Embeddings](#57-pca-map-with-retry-button--lecture-center-embeddings)
+   - [Evaluation Tab (With Retry Button) – Recall@K Bar Chart and Metrics](#58-evaluation-tab-with-retry-button--recallk-bar-chart-and-metrics)
+6. [How to Run](#6-how-to-run)
+   - [Prerequisites](#61-prerequisites)
+   - [Get the Project](#62-get-the-project)
+   - [(Recommended) Create and Activate a Virtual Environment](#63-recommended-create-and-activate-a-virtual-environment)
+   - [Install Python Dependencies](#64-install-python-dependencies)
+   - [Vector Index (Already Provided, Optional to Rebuild)](#65-vector-index-already-provided-optional-to-rebuild)
+   - [(Optional) Run Retrieval Evaluation](#66-optional-run-retrieval-evaluation)
+   - [(Optional) Visualize Embeddings (PCA)](#67-optional-visualize-embeddings-pca)
+   - [Launch the Web App](#68-launch-the-web-app)
+   - [Use the App (Chat / PCA Map / Evaluation Tabs)](#69-use-the-app-chat--pca-map--evaluation-tabs)
+
+
 
 ## 1. Introduction
 
@@ -29,7 +64,8 @@ ML_Project/
 ├── indexer.py              
 ├── requirements.txt   
 ├── README.md             
-├── Slides/                
+├── Slides/
+├── Pages/              
 ├── indexes/                
 └── data/                   
 ```
@@ -103,7 +139,7 @@ The system generates a self-quiz after each valid lecture-related question:
 
 ### 3.1 Retrieval Quality
 
-![Retrieval Recall@K](.\assets\recall_at_k.png)
+![Retrieval Recall@K](assets/recall_at_k.png)
 
 To verify that retrieval is not “hand-waved”, I built a small labeled evaluation set of 15 questions `\data\eval_questions.json`.  Each question is tagged with a gold lecture ID (e.g., `Lec 05`) and is evaluated by whether the correct lecture appears in the top-K retrieved results `\data\retrieval_eval_results.csv`.
 
@@ -121,7 +157,7 @@ This means the FAISS + `all-MiniLM-L6-v2` pipeline is already strong enough that
 
 ### 3.2 PCA of Slide Embeddings
 
-![PCA of Slide Embeddings](.\assets\lecture_pca.png)
+![PCA of Slide Embeddings](assets/lecture_pca.png)
 
 The PCA plot of all slide-level embeddings shows two clear phenomena:
 
@@ -132,7 +168,7 @@ This indicates that the `all-MiniLM-L6-v2` embeddings, combined with the one-sli
 
 ### 3.3 PCA of Lecture Centers
 
-![PCA of Lecture Centers](.\assets\lecture_centers_pca.png)
+![PCA of Lecture Centers](assets/lecture_centers_pca.png)
 
 The lecture-center PCA plot (each point is the mean embedding of all slides in a lecture) gives a more “syllabus-level” view:
 
@@ -144,7 +180,7 @@ Overall, the geometry of the lecture centers validates that the embedding space 
 
 ## 4. System Architecture
 
-![SystemProcess](./assets/SystemProcess.jpeg)
+![SystemProcess](assets/SystemProcess.jpeg)
 
 **Indexing pipeline**
 
@@ -187,41 +223,41 @@ Overall, the geometry of the lecture centers validates that the embedding space 
 
 ## 5. Demo Screenshots
 
-#### 5.1 Overall Home UI (Three Tabs: Chat / PCA Map / Evaluation)
+### 5.1 Overall Home UI (Three Tabs: Chat / PCA Map / Evaluation)
 
-![UI1](./assets/image-20251213062527617.png)
+![UI1](assets/image-20251213062527617.png)
 
-#### 5.2 Chat – Simple Question and Self-Quiz Generated with Slide Citations
+### 5.2 Chat – Simple Question and Self-Quiz Generated with Slide Citations
 
-![UI2](./assets/image-20251213062932621.png)
+![UI2](assets/image-20251213062932621.png)
 
-![UI3](./assets/image-20251213062948757.png)
+![UI3](assets/image-20251213062948757.png)
 
-#### 5.3 Chat – Formula / Derivation Question
+### 5.3 Chat – Formula / Derivation Question
 
-![UI4](./assets/image-20251213065600952.png)
+![UI4](assets/image-20251213065600952.png)
 
-![UI5](./assets/image-20251213065623702.png)
+![UI5](assets/image-20251213065623702.png)
 
-#### 5.4 Chat – Off-Topic Question 
+### 5.4 Chat – Off-Topic Question 
 
-![YI6](./assets/image-20251213063516084.png)
+![UI6](assets/image-20251213063516084.png)
 
-#### 5.5 Chat – Invalid / Very Short Query (“test”) 
+### 5.5 Chat – Invalid / Very Short Query (“test”) 
 
-![UI7](./assets/image-20251213063557113.png)
+![UI7](assets/image-20251213063557113.png)
 
-#### 5.6 PCA Map  (With Retry Button) – Slide Embeddings Colored by Lecture
+### 5.6 PCA Map  (With Retry Button) – Slide Embeddings Colored by Lecture
 
-![UI8](./assets/image-20251213063138698.png)
+![UI8](assets/image-20251213063138698.png)
 
-#### 5.7 PCA Map (With Retry Button) – Lecture Center Embeddings 
+### 5.7 PCA Map (With Retry Button) – Lecture Center Embeddings 
 
-![UI9](./assets/image-20251213063150775.png)
+![UI9](assets/image-20251213063150775.png)
 
-#### 5.8 Evaluation Tab (With Retry Button) – Recall@K Bar Chart and Metrics 
+### 5.8 Evaluation Tab (With Retry Button) – Recall@K Bar Chart and Metrics 
 
-![UI10](./assets/image-20251213063214961.png)
+![UI10](assets/image-20251213063214961.png)
 
 ## 6. How to Run
 
@@ -344,7 +380,7 @@ On startup, you should see log messages about:
 - Loading the FAISS index from `data/`.
 - Starting the Gradio server.
 
-Gradio will print a Random URL such as:
+Gradio will print a Random URL *such as*:
 
 ```
 Running on local URL:  http://127.0.0.1:7860
