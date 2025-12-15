@@ -4,6 +4,8 @@
 
 ![UI1](assets/image-20251213062527617.png)
 
+### 🙋‍Team Member: Wenbo Duan (wd2329)
+
 ## Table of Contents
 
 1. [Introduction](#1-introduction)
