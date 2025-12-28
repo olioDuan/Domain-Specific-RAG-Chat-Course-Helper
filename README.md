@@ -1,10 +1,9 @@
-# Domain-Specific RAG-Chat Course Helper for 6143-ML
+# Domain-Specific RAG-Chat Course Helper
 
 ![DeepSeek R1](https://img.shields.io/badge/Model-DeepSeek_R1-536AF5) ![Ollama](https://img.shields.io/badge/Runner-Ollama-white?logo=ollama&logoColor=black) ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white) ![HuggingFace](https://img.shields.io/badge/Embeddings-Hugging_Face-FFD21E?logo=huggingface&logoColor=black) ![FAISS](https://img.shields.io/badge/Vector_DB-FAISS-008080) ![Gradio](https://img.shields.io/badge/UI-Gradio-FF7C00?logo=gradio&logoColor=white) ![NYU](https://img.shields.io/badge/Course-NYU_6143-57068c)
 
 ![UI1](assets/image-20251213062527617.png)
 
-### 🙋‍Team Member: Wenbo Duan (wd2329)
 
 ## Table of Contents
 
